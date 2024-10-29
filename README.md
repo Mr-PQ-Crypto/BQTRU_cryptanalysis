@@ -1,7 +1,7 @@
 # Giant Does NOT Mean Strong: Cryptanalysis of BQTRU
 This repository contains the scripts accompanying the article 
 ## Providing experimental results to show the efficiency of our proposed folding attack against BQTRU.
-![Equation][x^\prime]
+
 # Requirements
 
 * [fpylll](https://github.com/fplll/fpylll)
