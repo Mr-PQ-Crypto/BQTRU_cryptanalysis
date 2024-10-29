@@ -1,6 +1,6 @@
 # Giant Does NOT Mean Strong: Cryptanalysis of BQTRU
 This repository contains the scripts accompanying the article
-
+![equation](http://latex.codecogs.com/gif.latex?Concentration%3D%5Cfrac%7BTotalTemplate%7D%7BTotalVolume%7D)  
 ## Providing experimental results to show the efficiency of our proposed folding attack against BQTRU.
 
 # Requirements
