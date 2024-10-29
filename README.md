@@ -45,9 +45,13 @@ each core can run up to 2 threads.
 Run `attack.py` with the following parameters.
 python attack.py 196 'check_for_7' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1
 
-* `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is $4{n^\prime}^2$
-for $ n^\prime=5,7,11,...$.
-* `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that $ {n^\prime}|(q-1) $ and achieves no
+* `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is
+  $4{n^\prime}^2$
+for
+$ n^\prime=5,7,11,...$.
+* `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that
+ $ {n^\prime}|(q-1) $
+and achieves no
 decryption failure.
 * `--option`: `0` or `1` (default `0`). `0` means no dimension reduction, and `1` indicates applying dimension reduction.
 * `--weak_instance`: `True` or `False` (default `True`). `True` refers to generating the key as in BQTRU paper `Algorithm 1` in our paper, and
@@ -94,8 +98,13 @@ been guessed correctly.
 The previous command takes, on average, 2 minutes on a laptop and solves the SVP in the lattice of dimension `200`.
 
 Beyond this value, we cannot retrieve the secret key without applying dimension reduction,
-as $n^\prime=7$ leads to $n=4{n^\prime}^2=196$, and therefore, for a correctly guessed set `T,` in order to find the key,
-the lattice dimension to be reduced is `392`. Therefore, the ultimate cost of the attack is $ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
+as 
+$n^\prime=7$
+leads to
+$n=4{n^\prime}^2=196$
+, and therefore, for a correctly guessed set `T,` in order to find the key,
+the lattice dimension to be reduced is `392`. Therefore, the ultimate cost of the attack is 
+$ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
 
 
 The set `T` has a small cardinality in practice, one can parallelize the guessing part as well. 
