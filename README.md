@@ -230,7 +230,8 @@ of 800 MHZ and 32 GB RAM; each core can run up to 2 threads on parallel
 a) `No dimension reduction`:
 
 As in the NTRU cryptosystem, the message recovery attack can be translated to find the closet vector to
-$(\textbf{c},\textbf{0}_n)$ which lies in the lattice generated from the basis
+$(\textbf{c},\textbf{0}_n)$
+which lies in the lattice generated from the basis
 
 $$
   \mathcal{B}_{CS} = \begin{pmatrix}
