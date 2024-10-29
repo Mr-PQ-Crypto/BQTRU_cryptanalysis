@@ -43,7 +43,8 @@ each core can run up to 2 threads.
 # How to use
 
 Run `attack.py` with the following parameters.
-`python attack.py 196 'reduction' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1`
+
+```python attack.py 196 'reduction' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1```
 
 * `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is
   $4{n^\prime}^2$
@@ -112,7 +113,7 @@ $ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \righ
 The set `T` has a small cardinality in practice, one can parallelize the guessing part as well. 
 Hence, For each guessed set `T,`  the attacker builds the associated lattice
 and applies lattice reduction.
-The lattice reduction cost that is a function of the lattice dimension and the lattice gap.
+The lattice reduction cost is a function of the lattice dimension and the lattice gap.
 The dimension of the associated lattice with
 $n^\prime=7$
 is larger than the solved record for NTRU-like lattices of dimension `362` as 
