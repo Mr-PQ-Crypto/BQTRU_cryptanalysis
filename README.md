@@ -113,7 +113,7 @@ b) `With dimension reduction`:
 that reduces the lattice dimension according to the homomorphisms introduced in the paper.
 
 For $n^{\prime}=7$,  instead of solving the SVP in a lattice of dimension 392, the defined homomorphism solves the SVP in a lattice of 
-dimension 196. The defined  homomorphisms decrease the lattice dimension  by a factor of `2` and keep the lattice dimension almost unchanged.
+dimension 196. The defined  homomorphisms decrease the lattice dimension  by a factor of `2` and keep the key norm almost unchanged.
 
 ```
 python attack.py 196 'reduection' --verbose=True --dump=True --bkz_betas=3:20  --option=1
