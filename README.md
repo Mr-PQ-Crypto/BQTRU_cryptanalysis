@@ -48,7 +48,8 @@ python attack.py 196 'check_for_7' --verbose=True --dump=True --bkz_betas=3:50 -
 * `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is
   $4{n^\prime}^2$
 for
-$ n^\prime=5,7,11,...$.
+$ n^\prime=5,7,11,...$
+.
 * `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that
  $ {n^\prime}|(q-1) $
 and achieves no
@@ -104,15 +105,18 @@ leads to
 $n=4{n^\prime}^2=196$
 , and therefore, for a correctly guessed set `T,` in order to find the key,
 the lattice dimension to be reduced is `392`. Therefore, the ultimate cost of the attack is 
-$ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
+$ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$
+.
 
 
 The set `T` has a small cardinality in practice, one can parallelize the guessing part as well. 
 Hence, For each guessed set `T,`  the attacker builds the associated lattice
 and applies lattice reduction.
 The lattice reduction cost that is a function of the lattice dimension and the lattice gap.
-The dimension of the associated lattice with $n^\prime=7$ is larger than the solved record for NTRU-like lattices of dimension `362` as 
-reported in [NTRU new records](https://eprint.iacr.org/2023/582.pdf), and therefore it's difficult to retrieve the key experimentally
+The dimension of the associated lattice with
+$n^\prime=7$
+is larger than the solved record for NTRU-like lattices of dimension `362` as 
+reported in [NTRU new records](https://eprint.iacr.org/2023/582.pdf), and therefore, it's difficult to retrieve the key experimentally
 in such dimension without applying our defined homomorphisms (see Key recovery attack: section b).
 
 
@@ -121,7 +125,9 @@ b) `With dimension reduction`:
 * b.1) if the set `T` has been guessed correctly, then the key can be recovered easily by launching the following command
 that reduces the lattice dimension according to the homomorphisms introduced in the paper.
 
-For $n^{\prime}=7$,  instead of solving the SVP in a lattice of dimension 392, the defined homomorphism solves the SVP in a lattice of 
+For
+$n^{\prime}=7$
+,  instead of solving the SVP in a lattice of dimension 392, the defined homomorphism solves the SVP in a lattice of 
 dimension 196. The defined  homomorphisms decrease the lattice dimension  by a factor of `2` and keep the key norm almost unchanged.
 
 ```
@@ -142,7 +148,9 @@ python attack.py 196 'reduection_bqtru_paper' -q=113 --verbose=True --dump=True 
 lattice reduction for lattices of the same dimension will take more time to retrieve a possible decryption key.
 
 * For instance, one instance to retrieve the key according to the previous command finds a decryption key at blocksize
-$\beta \approx 52$ and takes 8 hours on average on a single core of a laptop.
+
+$\beta \approx 52$ 
+and takes 8 hours on average on a single core of a laptop.
 
 
 * b.2) Fully automated attack: for the sake of completeness, we report the cost of the fully automated key recovery attack
