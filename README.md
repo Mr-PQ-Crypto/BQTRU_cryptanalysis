@@ -44,7 +44,9 @@ each core can run up to 2 threads.
 
 Run `attack.py` with the following parameters.
 
-```python attack.py 196 'reduction' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1```
+```
+python attack.py 196 'reduction' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1
+```
 
 * `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is
   $4{n^\prime}^2$
