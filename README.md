@@ -47,8 +47,8 @@ Run `attack.py` with the following parameters.
 python attack.py 196 'check_for_7' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1
 
 * `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is $4{n^\prime}^2$
-for $n^\prime=5,7,11,...$.
-* `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that ${n^\prime}|(q-1)$ and achieves no
+for $ n^\prime=5,7,11,...$.
+* `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that $ {n^\prime}|(q-1) $ and achieves no
 decryption failure.
 * `--option`: `0` or `1` (default `0`). `0` means no dimension reduction, and `1` indicates applying dimension reduction.
 * `--weak_instance`: `True` or `False` (default `True`). `True` refers to generating the key as in BQTRU paper `Algorithm 1` in our paper, and
