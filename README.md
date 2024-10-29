@@ -195,7 +195,7 @@ and $v=$
 103, 3, 64, 46, 5, 56, 78, 3, 64, 46, 5, 56, 78, 103, 64, 46, 5, 56, 78, 103, 3
 ```
 
-The key recovery attack can find a possible decryption key by guessing the correct $T=\{0, 24\}$ (consequently retrieving 
+The key recovery attack can find a possible decryption key by guessing the correct T={ 0, 24} (consequently retrieving 
 the correct $v$) and retrieving possible $f^\prime$
 and $g^\prime$ that satisfy the key equation.
 
