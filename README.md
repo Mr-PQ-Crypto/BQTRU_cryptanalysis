@@ -151,7 +151,7 @@ On average, for the moderate parameter set of BQTRU, this command takes `12 core
 For instance for the following seed `(5009164915004678619, (2161621714291647112, 12621217469982390358, 6723073299635622167, 936773917163686685))`:
 
 The public key is 
-``` gives h
+``` gives $h=$
 81, 27, 11, 94, 103, 102, 34, 73, 76, 26, 103, 86, 111, 22, 64, 93, 6, 15, 110, 76, 90, 58, 64, 10, 102, 61, 83, 47, 67,
 7, 4, 38, 75, 90, 66, 18, 42, 27, 31, 72, 81, 105, 75, 28, 49, 82, 78, 103, 64, 45, 104, 31, 97, 1, 0, 32, 29, 54, 96,
 75, 40, 30, 30, 47, 89, 9, 33, 27, 72, 23, 78, 86, 56, 77, 21, 87, 60, 86, 50, 107, 4, 77, 98, 72, 31, 9, 81, 100, 19, 
@@ -202,7 +202,7 @@ and $g^\prime$ that satisfy the key equation.
 For the above seed, our attack retrieve same $v$ and the following decryption key compiled as $(g^\prime, f^\prime)$ 
 at blocksize `53`.
 
-$(g^\prime, f^\prime)$
+$(g^\prime, f^\prime)=$
 ```
 0, 0, 1, 1, 0, -1, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 1, 0, -1,
 0, 0, 0, 0, -1, 0, 0, 1, 1, 0, -1, 1, -1, 0, 0, 1, -1, 0, -1, -1, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -261,7 +261,7 @@ The previous command retrieves the message at blocksize $18$, on average,  and t
 Beyond this dimension, we can't run the experiment to retrieve the message for larger parameter sets without considering the 
 homomorphisms defined in the paper for the message recovery attack.
 
-As for $n^\prime =7$, the value of $n=196$ and, therefore the lattice dimension where one needs to apply the lattice reduction is $392$
+As for $n^\prime =7$, the value of $n=196$ and, therefore, the lattice dimension where one needs to apply the lattice reduction is $392$
 
 b) `With dimension reduction`:
 
@@ -283,7 +283,7 @@ python attack.py 196 'reduection' --verbose=True --dump=True --bkz_betas=53:75 -
 We retrieve the message with blocksize on average $63$ and take on our device almost $10$ core days. 
 
 ## How not to fix BQTRU
-Running the key attack with the flag `--weak_instace=False,` generate the key according to the modified algorithm 
+Running the key attack with the flag `--weak_instace=False,` generates the key according to the modified algorithm 
 (Algorithm 2) in the paper and perform the lattice reduction against the lattice generated from the basis 
 $\mathcal{B}_{CS, \phi}^{new}$. The lattice reduction algorithm takes needs slightly higher blocksize to reduce the lattice
 compared to the lattice generated according to the original key generation process in BQTRU (Algorithm 1 in our paper).
