@@ -291,6 +291,7 @@ b) `With dimension reduction`:
 
 This subsection applies the message attack after employing the folding attack mentioned in subsection 5.2 in the paper.
 As summarized in the following figure
+
 ![message folding attack](assets/message_folding.png)
 
 
