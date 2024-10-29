@@ -1,7 +1,7 @@
 # Giant Does NOT Mean Strong: Cryptanalysis of BQTRU
 This repository contains the scripts accompanying the article
 
-## Providing experimental results to show the efficiency of our proposed folding attack agianst BQTRU.
+## Providing experimental results to show the efficiency of our proposed folding attack against BQTRU.
 
 # Requirements
 
@@ -19,7 +19,7 @@ Short description of the content:
   * subfolder `records` contains records for the trials that have been executed for key recovery attack against the parameter sets 
     ;The records save `f`,`g` as in the original key, `norm`: the key norm,`h`: the public key,`k1 (non-ternary)`: a possible non-ternary key found
     ,`k1-norm`: its norm,`k2 (ternary)`: a possible ternary key found,`k2-norm`: its norm,`beta1`: the blocksize to find the non-ternary
-  ,`beta2`: the blocksize to find the ternary,`guessed T`: the guessed set T, `guessed v(lagrange)`: the guessed v with respect to lagrange basis
+  ,`beta2`: the blocksize to find the ternary,`guessed T`: the guessed set T, `guessed v(lagrange)`: the guessed v with respect to Lagrange basis
   ,`guessed v(monomial)`: the guessed v with respect to monomial basis,`total time (seconds)`: the total time in seconds to run the attack 
   * subfolder seeds: reports the seeds for the executed trials against the parameter sets  
   
@@ -46,18 +46,18 @@ each core can run up to 2 threads.
 Run `attack.py` with the following parameters.
 python attack.py 196 'check_for_7' --verbose=True --dump=True --bkz_betas=3:50 --trials=15 --option=0 --weak_instance=True --guess=False --attack_type=1 --option=1
 
-* `n`: Integer. Obligatory parameter, defines the order used in BQTRU i.e, the number of the coefficients in the private key. In BQTRU, this order is $4{n^\prime}^2$
+* `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is $4{n^\prime}^2$
 for $n^\prime=5,7,11,...$.
 * `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that ${n^\prime}|(q-1)$ and achieves no
 decryption failure.
 * `--option`: `0` or `1` (default `0`). `0` means no dimension reduction, and `1` indicates applying dimension reduction.
-* `--weak_instance`: `True` or `False` (default `True`). `True` refers to generate the key as in BQTRU paper `Algorithm 1` in our paper, and
-`False` refers to generate the key as in the first trials to fix BQTRU `Algorithm 2`.
-*  `--attack_type`: `0` or `1` (default `0`). `0` means key attack and `1` refers to message attack.
+* `--weak_instance`: `True` or `False` (default `True`). `True` refers to generating the key as in BQTRU paper `Algorithm 1` in our paper, and
+`False` refers to generating the key as in the first trials to fix BQTRU `Algorithm 2`.
+*  `--attack_type`: `0` or `1` (default `0`). `0` means key attack, and `1` refers to message attack.
 * `--guess`: `True` or `False` (default `False`). `False` means do not guess the set `I`, assumes it is guessed correctly and directly performs the 
-lattice reduction attacks, and `True` means guess all the possible sets for `I` and try the lattice reduction (the latter option takes the maximum time as 
+lattice reduction attacks, and `True` means guessing all the possible sets for `I` and trying the lattice reduction (the latter option takes the maximum time as 
 it performs the guessing+lattice reduction for every guessed set `I`).
-* `--seed`: randomness seed to generate a key and build the corresponding lattices. If not entered, it will be generated, randomly. The random seed is tuple of the form
+* `--seed`: randomness seed to generate a key and build the corresponding lattices. If not entered, it will be generated randomly. The random seed is a tuple of the form
   `(fseed, (g_0 seed, g_1 seed, g_2 seed, g_3 seed ))`, where `fseed` is the seed used to generate the secret key `f = f_0+f_1i + f_2j + f_3 k` 
 and `g_i seed` is the seed used to generate the `g_i` in the private vector `g_i`. 
 * 
@@ -65,8 +65,8 @@ and `g_i seed` is the seed used to generate the `g_i` in the private vector `g_i
 to try upon running progressive bkz.
 * `--dump`: True to save the results into files, False otherwise.
 * `--verbose`: True to print detailed output in the console while running the program, False otherwise.
-* `--filename`: the file's name where to save the results. If not entered, it generated as `n_q`
-*  `file_tag` : Obligatory. String that is used as a suffix for the file name.
+* `--filename`: the file's name where to save the results. If not entered, it is generated as `n_q`
+*  `file_tag`: Obligatory. String that is used as a suffix for the file name.
 * 
 
 Parameters related to running experiments in parallel: 
@@ -90,17 +90,17 @@ python attack.py 100 'no_reduection' --verbose=True --dump=True --bkz_betas=3:20
 ```
 
 The previous command generates a random seed and an instance corresponding to the seed and runs the attack.
-It runs progressive BKZ for BQTRU lattice generated with default options assuming that the set `I` has 
+It runs progressive BKZ for BQTRU lattice generated with default options, assuming that the set `I` has 
 been guessed correctly.
-The previous command takes on average 2 minutes on a laptop and solve the SVP in lattice of dimension `200`.
+The previous command takes, on average, 2 minutes on a laptop and solves the SVP in the lattice of dimension `200`.
 
-Beyond this value, we can Not retrieve the secret key without applying dimension reduction,
-as $n^\prime=7$ leads to $n=4{n^\prime}^2=196$, and therefore, for a correctly guessed set `T`, in order to find key,
-the lattice dimension to be reduces is `392`. Therefore, the ultimate cost of the attack is $ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
+Beyond this value, we cannot retrieve the secret key without applying dimension reduction,
+as $n^\prime=7$ leads to $n=4{n^\prime}^2=196$, and therefore, for a correctly guessed set `T,` in order to find the key,
+the lattice dimension to be reduced is `392`. Therefore, the ultimate cost of the attack is $ \left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
 
 
 The set `T` has a small cardinality in practice, one can parallelize the guessing part as well. 
-Hence, For each guessed set `T`,  tha attacker builds the associated lattice
+Hence, For each guessed set `T,`  the attacker builds the associated lattice
 and applies lattice reduction.
 The lattice reduction cost that is a function of the lattice dimension and the lattice gap.
 The dimension of the associated lattice with $n^\prime=7$ is larger than the solved record for NTRU-like lattices of dimension `362` as 
@@ -110,7 +110,7 @@ in such dimension without applying our defined homomorphisms (see Key recovery a
 
 b) `With dimension reduction`:
 
-* b.1) if the set `T` has been guessed correctly: then the key can be recovered easily by launching the following command
+* b.1) if the set `T` has been guessed correctly, then the key can be recovered easily by launching the following command
 that reduces the lattice dimension according to the homomorphisms introduced in the paper.
 
 For $n^{\prime}=7$,  instead of solving the SVP in a lattice of dimension 392, the defined homomorphism solves the SVP in a lattice of 
@@ -119,25 +119,25 @@ dimension 196. The defined  homomorphisms decrease the lattice dimension  by a f
 ```
 python attack.py 196 'reduection' --verbose=True --dump=True --bkz_betas=3:20  --option=1
 ```
-* The previous command generates `q=547` as `7|(q-1)` and the selected value of `q` guarantees no decryption failure.
-* Running one instance as in the previous command takes approximately 5 minutes on a single core of a laptop to retrieve 
+* The previous command generates `q=547` as `7|(q-1)`, and the selected value of `q` guarantees no decryption failure.
+* Running one instance, as in the previous command, takes approximately 5 minutes on a single core of a laptop to retrieve 
 a possible decryption key.
 
 In order to attack the exact parameter set proposed in [BQTRU](https://link.springer.com/content/pdf/10.1007/s10623-017-0451-4.pdf), 
-which have smaller value of `q` (and high decryption failure rate), we run the command with identifying the value of `q`
+which have a smaller value of `q` (and high decryption failure rate), we run the command to identify the value of `q`
 
 ```
 python attack.py 196 'reduection_bqtru_paper' -q=113 --verbose=True --dump=True --bkz_betas=3:20  --option=1
 ```
 
-* The lattice gap for `q=113` is much smaller compared to the case which allows zero decryption failure, therefore the 
+* The lattice gap for `q=113` is much smaller compared to the case which allows zero decryption failure therefore the 
 lattice reduction for lattices of the same dimension will take more time to retrieve a possible decryption key.
 
 * For instance, one instance to retrieve the key according to the previous command finds a decryption key at blocksize
-$\beta \approx 52$ and takes 8 hours on a average on a single core of a laptop.
+$\beta \approx 52$ and takes 8 hours on average on a single core of a laptop.
 
 
-* b.2) Fully automated attack: for sake of completeness, we report the cost of the fully automated key recovery attack
+* b.2) Fully automated attack: for the sake of completeness, we report the cost of the fully automated key recovery attack
 that takes into consideration the cost of the search for `T` and applying the lattice reduction on a single core.
 
 To launch the fully automated attack against the key, we enable the `guess ` flag as the following:
@@ -147,7 +147,7 @@ python attack.py 196 'reduection_bqtru_paper' -q=113 --verbose=True --dump=True 
 ```
 For every guessed set `T`, the previous command applies the lattice reduction and search for a possible decryption key.
 
-On average for the moderate parameter set of BQTRU, this command takes on average `12 core days` on a laptop.
+On average, for the moderate parameter set of BQTRU, this command takes `12 core days` on a laptop.
 
 For instance for the following seed `(5009164915004678619, (2161621714291647112, 12621217469982390358, 6723073299635622167, 936773917163686685))`:
 
@@ -230,7 +230,7 @@ of 800 MHZ and 32 GB RAM; each core can run up to 2 threads on parallel
 
 a) `No dimension reduction`:
 
-As in NTRU cryptosystem, the message recovery attack can be translated to find the closet vector to
+As in the NTRU cryptosystem, the message recovery attack can be translated to find the closet vector to
 $(\textbf{c},\textbf{0}_n)$ which lies in the lattice generated from the basis
 $$
   \mathcal{B}_{CS} = \begin{pmatrix}
@@ -241,7 +241,7 @@ $$
 
 where the vector $\textbf{c}$ is the vector corresponding to the ciphertext and $\mathcal{S}$ is the group ring NTRU matrix associated with BQTRU.
 
-To identify the smallest blocksize needed to solve the CVP, we follow the common embedding technique that convert solving the CVP in a $n$-dimensional lattice into solving the uSVP in a $(n+1)$-dimensional lattice generated from the basis
+To identify the smallest blocksize needed to solve the CVP, we follow the common embedding technique that converts solving the CVP in a $n$-dimensional lattice into solving the uSVP in a $(n+1)$-dimensional lattice generated from the basis.
 
 $$
   \mathcal{B^\prime}_{CS} = \begin{pmatrix}
@@ -251,7 +251,7 @@ $$
 \end{pmatrix}
 $$
 
-The following command launches a message recovery attack against BQTRU for $n=100 (i.e., n^\prime = 5)$ by generating a random key, message and encrypting it, then perform the embedding into uSVP. 
+The following command launches a message recovery attack against BQTRU for $n=100 (i.e., n^\prime = 5)$ by generating a random key message and encrypting it, then performing the embedding into uSVP. 
 
 ```
 python attack.py 100 'no_reduection' --verbose=True --dump=True --bkz_betas=3:50 --attack_type=1
@@ -262,7 +262,7 @@ The previous command retrieves the message at blocksize $18$, on average,  and t
 Beyond this dimension, we can't run the experiment to retrieve the message for larger parameter sets without considering the 
 homomorphisms defined in the paper for the message recovery attack.
 
-As for $n^\prime =7$, the value of $n=196$ and therefore the lattice dimension where one needs to apply the lattice reduction is $392$
+As for $n^\prime =7$, the value of $n=196$ and, therefore the lattice dimension where one needs to apply the lattice reduction is $392$
 
 b) `With dimension reduction`:
 
@@ -272,7 +272,7 @@ As summarized in the following figure
 
 
 First, to show the benefit of our dimension reduction (folding) attack, we run the same command for the message recovery
-for `n=100` with the flag `--option=1` which means that the attack considers one-layer of the dimension reduction and the
+for `n=100` with the flag `--option=1`, which means that the attack considers one layer of the dimension reduction and the
 message is retrieved at blocksize $2$ or $3$ and takes less than $1$ seconds, approximately. 
 
 For the actual parameter set of BQTRU $(n=7, q=113)$, we run the following command:
@@ -281,13 +281,13 @@ For the actual parameter set of BQTRU $(n=7, q=113)$, we run the following comma
 python attack.py 196 'reduection' --verbose=True --dump=True --bkz_betas=53:75 --attack_type=1 --option=1
 ```
 
-We retrieve the message with blocksize on average $63$ and takes on our device almost $10$ core days. 
+We retrieve the message with blocksize on average $63$ and take on our device almost $10$ core days. 
 
 ## How not to fix BQTRU
-Running the key attack with the flag `--weak_instace=False`, generate the key according to the modified algorithm 
+Running the key attack with the flag `--weak_instace=False,` generate the key according to the modified algorithm 
 (Algorithm 2) in the paper and perform the lattice reduction against the lattice generated from the basis 
 $\mathcal{B}_{CS, \phi}^{new}$. The lattice reduction algorithm takes needs slightly higher blocksize to reduce the lattice
-compared to the lattice generated according the original key generation process in BQTRU (Algorithm 1 in our paper).
+compared to the lattice generated according to the original key generation process in BQTRU (Algorithm 1 in our paper).
 
 However, it does not thwart the proposed folding attack.
 
