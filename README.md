@@ -231,9 +231,10 @@ a) `No dimension reduction`:
 
 As in the NTRU cryptosystem, the message recovery attack can be translated to find the closet vector to
 $(\textbf{c},\textbf{0}_n)$ which lies in the lattice generated from the basis
+
 $$
   \mathcal{B}_{CS} = \begin{pmatrix}
-    q_n & 0      \\
+    qI_n & 0      \\
     \mathcal{S} & I_n \\
 \end{pmatrix}
 $$
@@ -244,7 +245,7 @@ To identify the smallest blocksize needed to solve the CVP, we follow the common
 
 $$
   \mathcal{B^\prime}_{CS} = \begin{pmatrix}
-    q_n           & 0_n         &   0    \\
+    qI_n           & 0_n         &   0    \\
     \mathcal{S}   &  I_n        &   0     \\
      \textbf{c}   & 0 \ldots  0 &   1 
 \end{pmatrix}
