@@ -251,7 +251,9 @@ $$
 \end{pmatrix}
 $$
 
-The following command launches a message recovery attack against BQTRU for $n=100 (i.e., n^\prime = 5)$ by generating a random key message and encrypting it, then performing the embedding into uSVP. 
+The following command launches a message recovery attack against BQTRU for 
+$n=100 (i.e., n^\prime = 5)$ 
+by generating a random key message and encrypting it, then performing the embedding into uSVP. 
 
 ```
 python attack.py 100 'no_reduection' --verbose=True --dump=True --bkz_betas=3:50 --attack_type=1
