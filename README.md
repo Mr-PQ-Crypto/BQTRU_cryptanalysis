@@ -39,9 +39,9 @@ run up to 2 threads(Timed results on this device).
 * `M3`: system Linux (Ubuntu 22.04.2 LTS) with Intel(R) Core(TM) i9-10980HK CPU @ 2.40GHz and 800 MHZ (min) and 32 GB RAM equipped with 8 cores; 
 each core can run up to 2 threads.
 
-- Key recovery attack files that contain the keyword `guess` indicate that the key attack is applied fully by guessing $v$ and applying lattice reduction to get $f,g$.
+Key recovery attack files that contain the keyword `guess` indicate that the key attack is applied fully by guessing $v$ and applying lattice reduction to get $f,g$.
 
-- Key recovery attack files that contain the keyword `fix1` indicate that the modified key generation process is applied (Algorithm 2 in the paper).
+Key recovery attack files that contain the keyword `fix1` indicate that the modified key generation process is applied (Algorithm 2 in the paper).
 
 
 # How to use
