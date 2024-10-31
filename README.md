@@ -18,7 +18,7 @@ Short description of the content:
   * subfolder `records` contains records for the trials that have been executed for key recovery attack against the parameter sets 
     ;The records save `f`,`g` as in the original key, `norm`: the key norm,`h`: the public key,`k1 (non-ternary)`: a possible non-ternary key found
     ,`k1-norm`: its norm,`k2 (ternary)`: a possible ternary key found,`k2-norm`: its norm,`beta1`: the blocksize to find the non-ternary
-  ,`beta2`: the blocksize to find the ternary,`guessed T`: the guessed set T, `guessed v(lagrange)`: the guessed v with respect to Lagrange basis
+  ,`beta2`: the blocksize to find the ternary,`guessed I`: the guessed set I (the positions of the set T), `guessed v(lagrange)`: the guessed v with respect to Lagrange basis
   ,`guessed v(monomial)`: the guessed v with respect to monomial basis,`total time (seconds)`: the total time in seconds to run the attack 
   * subfolder seeds: reports the seeds for the executed trials against the parameter sets  
   
@@ -92,7 +92,7 @@ Parameters related to running experiments in parallel:
 a) `No dimension reduction`:
 
 * You can launch the key attack(naive way) with no dimension reduction by applying no homomorphisms.
-In this attack, we guess the set `T` and then run the lattice reduction using progressive BKZ with no dimension
+In this attack, we guess the set `I` and then run the lattice reduction using progressive BKZ with no dimension
 reduction.
 
 ```
@@ -109,14 +109,14 @@ as
 $n^\prime=7$
 leads to
 $n=4{n^\prime}^2=196$
-, and therefore, for a correctly guessed set `T,` in order to find the key,
+, and therefore, for a correctly guessed set `I,` in order to find the key,
 the lattice dimension to be reduced is `392`. Therefore, the ultimate cost of the attack is 
 
 $\left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
 
 
-The set `T` has a small cardinality in practice, one can parallelize the guessing part as well. 
-Hence, For each guessed set `T,`  the attacker builds the associated lattice
+The set `I` has a small cardinality in practice, one can parallelize the guessing part as well. 
+Hence, For each guessed set `I,`  the attacker builds the associated lattice
 and applies lattice reduction.
 The lattice reduction cost is a function of the lattice dimension and the lattice gap.
 The dimension of the associated lattice with
@@ -128,7 +128,7 @@ in such dimension without applying our defined homomorphisms (see Key recovery a
 
 b) `With dimension reduction`:
 
-* b.1) if the set `T` has been guessed correctly, then the key can be recovered easily by launching the following command
+* b.1) if the set `I` has been guessed correctly, then the key can be recovered easily by launching the following command
 that reduces the lattice dimension according to the homomorphisms introduced in the paper.
 
 For
@@ -160,14 +160,14 @@ and takes 8 hours on average on a single core of a laptop.
 
 
 * b.2) Fully automated attack: for the sake of completeness, we report the cost of the fully automated key recovery attack
-that takes into consideration the cost of the search for `T` and applying the lattice reduction on a single core.
+that takes into consideration the cost of the search for `I` and applying the lattice reduction on a single core.
 
 To launch the fully automated attack against the key, we enable the `guess ` flag as the following:
 ```
 python attack.py 196 'reduection_bqtru_paper' -q=113 --verbose=True --dump=True --bkz_betas=3:20  --option=1 -guess=True
 
 ```
-For every guessed set `T`, the previous command applies the lattice reduction and search for a possible decryption key.
+For every guessed set `I`, the previous command applies the lattice reduction and searches for a possible decryption key.
 
 On average, for the moderate parameter set of BQTRU, this command takes `12 core days` on a laptop.
 
@@ -218,7 +218,7 @@ and $v=$
 103, 3, 64, 46, 5, 56, 78, 3, 64, 46, 5, 56, 78, 103, 64, 46, 5, 56, 78, 103, 3
 ```
 
-The key recovery attack can find a possible decryption key by guessing the correct T={ 0, 24} (consequently retrieving 
+The key recovery attack can find a possible decryption key by guessing the correct I={ 0, 24} (consequently retrieving 
 the correct $v$) and retrieving possible $f^\prime$
 and $g^\prime$ that satisfy the key equation.
 
@@ -311,9 +311,9 @@ python attack.py 196 'reduection' --verbose=True --dump=True --bkz_betas=53:75 -
 We retrieve the message with blocksize on average $63$ and take on our device almost $10$ core days. 
 
 ## How not to fix BQTRU
-Running the key attack with the flag `--weak_instace=False,` generates the key according to the modified algorithm 
+Running the key attack with the flag `--weak_instace=False` generates the key according to the modified algorithm 
 (Algorithm 2) in the paper and perform the lattice reduction against the lattice generated from the basis 
-$\mathcal{B}_{CS, \phi}^{new}$. The lattice reduction algorithm takes needs slightly higher blocksize to reduce the lattice
+$\mathcal{B}_{CS, \phi}^{new}$. The lattice reduction algorithm  needs slightly higher blocksize to reduce the lattice
 compared to the lattice generated according to the original key generation process in BQTRU (Algorithm 1 in our paper).
 
 However, it does not thwart the proposed folding attack.
