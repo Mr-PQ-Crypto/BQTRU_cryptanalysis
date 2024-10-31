@@ -112,8 +112,7 @@ $n=4{n^\prime}^2=196$
 , and therefore, for a correctly guessed set `T,` in order to find the key,
 the lattice dimension to be reduced is `392`. Therefore, the ultimate cost of the attack is 
 
-$\left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$
-.
+$\left( \sum_{i=0}^{7}\ {49 \choose i} * \text{cost of lattice reduction} \right)$.
 
 
 The set `T` has a small cardinality in practice, one can parallelize the guessing part as well. 
