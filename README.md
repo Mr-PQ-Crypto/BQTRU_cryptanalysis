@@ -58,7 +58,7 @@ for
 $n^\prime$
 =5,7,11,....
 * `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that
- $ {n^\prime}|(q-1) $
+ ${n^\prime}|(q-1)$
 and achieves no
 decryption failure.
 * `--option`: `0` or `1` (default `0`). `0` means no dimension reduction, and `1` indicates applying dimension reduction.
