@@ -269,7 +269,7 @@ def create_file(file_tage, group,filename,attack_type=0):
     if attack_type ==0:
         path = "keys_dumps/" +group + "/records/"
         header = ['f', 'g', 'key norm', 'h', 'k1 (non-ternary)', 'k1-norm', 'k2 (ternary)', 'k2-norm', 'beta1', 'beta2',
-                  'guessed T', 'guessed v(lagrange)', 'guessed v(monomial)', 'total time (seconds)']
+                  'guessed I', 'guessed v(lagrange)', 'guessed v(monomial)', 'total time (seconds)']
 
     else:
         path = "messages_dumps/" +group + "/records/"
