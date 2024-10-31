@@ -69,9 +69,8 @@ decryption failure.
 lattice reduction attacks, and `True` means guessing all the possible sets for `I` and trying the lattice reduction (the latter option takes the maximum time as 
 it performs the guessing+lattice reduction for every guessed set `I`).
 * `--seed`: randomness seed to generate a key and build the corresponding lattices. If not entered, it will be generated randomly. The random seed is a tuple of the form
-  `(fseed, (g_0 seed, g_1 seed, g_2 seed, g_3 seed ))`, where `fseed` is the seed used to generate the secret key `f = f_0+f_1i + f_2j + f_3 k` 
+  `(fseed, (g_0 seed, g_1 seed, g_2 seed, g_3 seed ))`, where `fseed` is the seed used to generate the secret key $f = f_0+f_1i + f_2j + f_3 k$ 
 and `g_i seed` is the seed used to generate the `g_i` in the private vector `g_i`. 
-* 
 * `--bkz_betas`: a string as 'b1:b2', where b1 indicates the first blocksize and b2 indicates the last blocksize
 to try upon running progressive bkz.
 * `--dump`: True to save the results into files, False otherwise.
