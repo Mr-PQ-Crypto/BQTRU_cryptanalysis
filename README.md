@@ -55,7 +55,7 @@ python attack.py 196 'reduction' --verbose=True --dump=True --bkz_betas=3:50 --t
 * `n`: Integer. Obligatory parameter defines the order used in BQTRU, i.e., the number of the coefficients in the private key. In BQTRU, this order is
   $4{n^\prime}^2$
 for
-n^\prime$
+$n^\prime$
 =5,7,11,....
 * `-q`: BQTRU modulus. If not entered, it is calculated as the first prime such that
  $ {n^\prime}|(q-1) $
