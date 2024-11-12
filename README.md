@@ -148,7 +148,7 @@ which have a smaller value of `q` (and high decryption failure rate), we run the
 python attack.py 196 'reduection_bqtru_paper' -q=113 --verbose=True --dump=True --bkz_betas=3:20  --option=1
 ```
 
-* The lattice gap for `q=113` is much smaller compared to the case which allows zero decryption failure therefore the 
+* The lattice gap for `q=113` is much greater compared to the case which allows zero decryption failure therefore the 
 lattice reduction for lattices of the same dimension will take more time to retrieve a possible decryption key.
 
 * For instance, one instance to retrieve the key according to the previous command finds a decryption key at blocksize
