@@ -303,7 +303,7 @@ message is retrieved at blocksize $2$ or $3$ and takes less than $1$ seconds, ap
 For the actual parameter set of BQTRU $(n=7, q=113)$, we run the following command:
 
 ```
-python attack.py 196 'reduection' --verbose=True --dump=True --bkz_betas=53:75 --attack_type=1 --option=1
+python attack.py 196 'reduection' -q=113 --verbose=True --dump=True --bkz_betas=53:75 --attack_type=1 --option=1
 ```
 
 We retrieve the message with blocksize on average $63$ and take on our device almost $10$ core days. 
